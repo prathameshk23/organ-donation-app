@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "341686594540",
+    "project_id": "appo-3425a",
+    "storage_bucket": "appo-3425a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341686594540:android:3ea8e94651eac150856ec9",
+        "android_client_info": {
+          "package_name": "com.example.organ_donation_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341686594540-a3m05q2spqkp8tcl5abukj5ughq4hpte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTKwB-VDwdDlakS2O-6Wbah_RLHrJdejk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341686594540-a3m05q2spqkp8tcl5abukj5ughq4hpte.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

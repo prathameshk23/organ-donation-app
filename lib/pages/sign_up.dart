@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:organ_donation_app/pages/home_page.dart';
@@ -19,9 +21,19 @@ class _SignUpPageState extends State<SignUpPage> {
   final _passController = TextEditingController();
 
   Future signUp() async {
+    showDialog(
+        context: context,
+        builder: ((context) {
+          return const Center(
+              child: CircularProgressIndicator(
+            color: Colors.yellow,
+          ));
+        }));
+
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passController.text.trim());
+    Navigator.of(context).pop();
     return const HomePage();
   }
 

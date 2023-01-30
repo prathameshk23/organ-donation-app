@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, duplicate_ignore, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, duplicate_ignore, avoid_unnecessary_containers, use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +24,20 @@ class _LoginPageState extends State<LoginPage> {
   final _passController = TextEditingController();
 
   Future signIn() async {
+    showDialog(
+        context: context,
+        builder: ((context) {
+          return Center(
+              child: CircularProgressIndicator(
+            color: Colors.yellow,
+          ));
+        }));
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passController.text.trim());
+
+    Navigator.of(context).pop();
   }
 
   @override

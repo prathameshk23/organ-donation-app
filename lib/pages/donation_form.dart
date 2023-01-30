@@ -79,6 +79,9 @@ class _DonaionFormState extends State<DonaionForm> {
       _ethnicityController.text.trim(),
       _religonController.text.trim(),
     );
+
+    Navigator.pop(context,
+        MaterialPageRoute(builder: ((context) => const DonaionForm())));
   }
 
   @override

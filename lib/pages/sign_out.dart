@@ -36,6 +36,7 @@ class _SignOutState extends State<SignOut> {
                 MaterialButton(
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
+                    Navigator.pop(context);
                   },
                   color: Colors.black,
                   child: Text(

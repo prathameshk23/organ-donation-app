@@ -6,8 +6,8 @@ import 'package:organ_donation_app/pages/login_page.dart';
 import '../components/my_textfield.dart';
 
 class SignUpPage extends StatefulWidget {
-  // final VoidCallback showLoginPage;
-  const SignUpPage({super.key});
+  final VoidCallback showLoginPage;
+  const SignUpPage({super.key, required this.showLoginPage});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -122,12 +122,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => const LoginPage())));
-                      },
+                      onTap: widget.showLoginPage,
                       child: const Text(
                         'Login now',
                         style: TextStyle(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:organ_donation_app/pages/contact_us.dart';
 import 'package:organ_donation_app/pages/donation_form.dart';
 import 'package:organ_donation_app/pages/info_page.dart';
-import 'package:organ_donation_app/pages/login_page.dart';
+import 'package:organ_donation_app/pages/sign_out.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: ((context) => LoginPage())));
+                                    builder: ((context) => SignOut())));
                           },
                           child: Container(
                               padding: EdgeInsets.all(12),

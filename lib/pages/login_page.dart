@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:organ_donation_app/pages/sign_up.dart';
+// import 'package:organ_donation_app/pages/sign_up.dart';
 
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
@@ -10,8 +10,8 @@ import '../components/my_textfield.dart';
 // import 'package:rive/rive.dart';
 
 class LoginPage extends StatefulWidget {
-  // final VoidCallback showSignUpPage;
-  const LoginPage({Key? key}) : super(key: key);
+  final VoidCallback showSignUpPage;
+  const LoginPage({Key? key, required this.showSignUpPage}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -104,12 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
-                      onTap: (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => SignUpPage())));
-                      }),
+                      onTap: widget.showSignUpPage,
                       child: const Text(
                         'Register now',
                         style: TextStyle(

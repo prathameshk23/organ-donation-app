@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:organ_donation_app/login_page.dart';
+import 'package:organ_donation_app/pages/login_page.dart';
 
 import 'home_page.dart';
 

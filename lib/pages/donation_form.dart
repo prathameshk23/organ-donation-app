@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../components/my_textfield.dart';
@@ -10,6 +12,75 @@ class DonaionForm extends StatefulWidget {
 }
 
 class _DonaionFormState extends State<DonaionForm> {
+  //text controllers
+  final _firstNameController = TextEditingController();
+  final _middleNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _dateController = TextEditingController();
+  final _genderController = TextEditingController();
+  final _organController = TextEditingController();
+  final _bloodController = TextEditingController();
+  final _medicalHistoryController = TextEditingController();
+  final _ethnicityController = TextEditingController();
+  final _religonController = TextEditingController();
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _middleNameController.dispose();
+    _lastNameController.dispose();
+    _dateController.dispose();
+    _genderController.dispose();
+    _organController.dispose();
+    _bloodController.dispose();
+    _medicalHistoryController.dispose();
+    _ethnicityController.dispose();
+    _religonController.dispose();
+    super.dispose();
+  }
+
+  final user = FirebaseAuth.instance.currentUser!;
+
+  Future addUserDetails(
+      String firstName,
+      String middleName,
+      String lastName,
+      String dateOfBirth,
+      String gender,
+      String organDonated,
+      String bloodType,
+      String medicalHistory,
+      String ethnicity,
+      String religion) async {
+    await FirebaseFirestore.instance.collection(user.email!).add({
+      'first name': firstName,
+      'middle name': middleName,
+      'last name': lastName,
+      'date of birth': dateOfBirth,
+      'gender': gender,
+      'donated organ': organDonated,
+      'blood type': bloodType,
+      'medical history': medicalHistory,
+      'ethnicity': ethnicity,
+      'religion': religion,
+    });
+  }
+
+  Future addDetail() async {
+    addUserDetails(
+      _firstNameController.text.trim(),
+      _middleNameController.text.trim(),
+      _lastNameController.text.trim(),
+      _dateController.text.trim(),
+      _genderController.text.trim(),
+      _organController.text.trim(),
+      _bloodController.text.trim(),
+      _medicalHistoryController.text.trim(),
+      _ethnicityController.text.trim(),
+      _religonController.text.trim(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +101,7 @@ class _DonaionFormState extends State<DonaionForm> {
 
                 const SizedBox(height: 10),
 
-                // welcome back, you've been missed!
+                // text
                 Text(
                   'Pledge an Organ',
                   style: TextStyle(
@@ -42,8 +113,8 @@ class _DonaionFormState extends State<DonaionForm> {
                 const SizedBox(height: 25),
 
                 // First Name textfield
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _firstNameController,
                   hintText: 'First Name',
                   obscureText: false,
                 ),
@@ -51,8 +122,8 @@ class _DonaionFormState extends State<DonaionForm> {
                 const SizedBox(height: 10),
 
                 // Middle Name textfield
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _middleNameController,
                   hintText: 'Middle Name',
                   obscureText: false,
                 ),
@@ -60,8 +131,8 @@ class _DonaionFormState extends State<DonaionForm> {
                 const SizedBox(height: 10),
                 // Last Name textfield
 
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _lastNameController,
                   hintText: 'Last Name',
                   obscureText: false,
                 ),
@@ -69,8 +140,8 @@ class _DonaionFormState extends State<DonaionForm> {
                 const SizedBox(height: 10),
                 // Date Of Birth textfield
 
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _dateController,
                   hintText: 'Date Of Birth',
                   obscureText: false,
                 ),
@@ -78,8 +149,8 @@ class _DonaionFormState extends State<DonaionForm> {
                 const SizedBox(height: 10),
                 // Gender textfield
 
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _genderController,
                   hintText: 'Gender',
                   obscureText: false,
                 ),
@@ -87,40 +158,40 @@ class _DonaionFormState extends State<DonaionForm> {
                 const SizedBox(height: 10),
                 // Organ to donate
 
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _organController,
                   hintText: 'I want to donate',
                   obscureText: false,
                 ),
 
                 const SizedBox(height: 10),
                 //Blood Type textfield
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _bloodController,
                   hintText: 'Blood Group',
                   obscureText: false,
                 ),
 
                 const SizedBox(height: 10),
                 //Medical History textfield
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _medicalHistoryController,
                   hintText: 'Medical History',
                   obscureText: false,
                 ),
 
                 const SizedBox(height: 10),
                 //Ethnicity textfield
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _ethnicityController,
                   hintText: 'Ethnicity',
                   obscureText: false,
                 ),
 
                 const SizedBox(height: 10),
                 //Religin textfield
-                const MyTextField(
-                  controller: null,
+                MyTextField(
+                  controller: _religonController,
                   hintText: 'Religion',
                   obscureText: false,
                 ),
@@ -129,7 +200,7 @@ class _DonaionFormState extends State<DonaionForm> {
 
                 // sign in button
                 GestureDetector(
-                  onTap: null,
+                  onTap: addDetail,
                   child: Container(
                     padding: const EdgeInsets.all(25),
                     margin: const EdgeInsets.symmetric(horizontal: 25),

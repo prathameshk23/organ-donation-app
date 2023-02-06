@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 import '../components/my_textfield.dart';
 
@@ -66,6 +67,18 @@ class _DonaionFormState extends State<DonaionForm> {
     });
   }
 
+  // Future sendEmail() async {
+  //   // print(user.email!);
+  //   final Email emailSend = Email(
+  //     body: 'haha the email was sent',
+  //     subject: 'This is a test email',
+  //     recipients: [user.email!],
+  //     isHTML: false,
+  //   );
+
+  //   await FlutterEmailSender.send(emailSend);
+  // }
+
   Future addDetail() async {
     addUserDetails(
       _firstNameController.text.trim(),
@@ -79,6 +92,8 @@ class _DonaionFormState extends State<DonaionForm> {
       _ethnicityController.text.trim(),
       _religonController.text.trim(),
     );
+
+    // sendEmail();
 
     Navigator.pop(context,
         MaterialPageRoute(builder: ((context) => const DonaionForm())));
@@ -201,7 +216,7 @@ class _DonaionFormState extends State<DonaionForm> {
 
                 const SizedBox(height: 25),
 
-                // sign in button
+                // donate button
                 GestureDetector(
                   onTap: addDetail,
                   child: Container(

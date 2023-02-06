@@ -21,7 +21,24 @@ class _SignOutState extends State<SignOut> {
             Center(
               child: Column(children: [
                 SizedBox(
-                  height: 200,
+                  height: 50,
+                ),
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.black,
+                    ),
+                    child: Icon(
+                      Icons.person,
+                      size: 80,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
                 ),
                 Text(
                   'Signed In as: ${user.email!}',
@@ -31,7 +48,7 @@ class _SignOutState extends State<SignOut> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
                 MaterialButton(
                   onPressed: () {
@@ -41,7 +58,7 @@ class _SignOutState extends State<SignOut> {
                   color: Colors.black,
                   child: Text(
                     'Sign Out',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 )
               ]),
